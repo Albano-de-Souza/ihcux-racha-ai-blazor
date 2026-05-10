@@ -1,0 +1,24 @@
+@using RachaAiBlazor.Models
+
+<div class="card mb-3 shadow-sm border-0">
+    <div class="card-body d-flex justify-content-between align-items-center">
+        <div>
+            <span class="badge bg-light text-dark border mb-1">@Group.Categoria</span>
+            <h5 class="fw-bold mb-0">@Group.Nome</h5>
+        </div>
+        
+        <div class="text-end">
+            <small class="text-muted d-block">@(Group.NoVermelho ? "Você deve" : "Você recebe")</small>
+            
+            <h5 class="@(Group.NoVermelho ? "text-danger" : "text-success") fw-bold mb-0">
+                R$ @Group.ValorPendente.ToString("N2")
+            </h5>
+        </div>
+    </div>
+</div>
+
+@code {
+    // Parâmetro que recebe o objeto do grupo para exibição [cite: 50]
+    [Parameter] 
+    public Grupo Group { get; set; } = new();
+}
